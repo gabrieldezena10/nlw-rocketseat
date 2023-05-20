@@ -63,12 +63,13 @@ export async function authRoutes(app: FastifyInstance) {
 
     const token = app.jwt.sign(
       {
+        // inserir informaççoes públicas neste primeiro parâmetro, já que ele não é criptografado
         name: user.name,
         avatarUrl: user.avatarUrl,
       },
       {
         sub: user.id,
-        expiresIn: '30d',
+        expiresIn: '30 days',
       },
     )
     return { token }
