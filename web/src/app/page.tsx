@@ -1,13 +1,13 @@
-import { User } from 'lucide-react'
-
-import nlwLogo from '../assets/nlw-spacetime-logo.svg'
-import Image from 'next/image'
 import { Copyright } from '@component/components/Copyright'
 import { Hero } from '@component/components/Hero'
 import { SignIn } from '@component/components/SignIn'
 import { EmptyMemories } from '@component/components/EmptyMemories'
+import { cookies } from 'next/headers'
+import { Profile } from '@component/components/Profile'
 
 export default function Home() {
+  const isAuthenticated = cookies().has('token')
+
   return (
     <main className="grid min-h-screen grid-cols-2">
       {/* Left */}
@@ -16,7 +16,7 @@ export default function Home() {
         <div className="absolute right-0 top-1/2 h-[288px] w-[526px] -translate-y-1/2 translate-x-1/2 rounded-full bg-purple-700 opacity-50 blur-full" />
         {/* Stripes */}
         <div className="absolute bottom-0 right-2 top-0 w-2 bg-stripes" />
-        <SignIn />
+        {isAuthenticated ? <Profile /> : <SignIn />}
         <Hero />
         <Copyright />
       </div>
