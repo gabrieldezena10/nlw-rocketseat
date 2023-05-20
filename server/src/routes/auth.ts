@@ -63,7 +63,7 @@ export async function authRoutes(app: FastifyInstance) {
 
     const token = app.jwt.sign(
       {
-        // inserir informaççoes públicas neste primeiro parâmetro, já que ele não é criptografado
+        // inserir informaççoes públicas que eu quero deixar visíveis na interface da minha aplicação neste primeiro parâmetro, já que ele não é criptografado
         name: user.name,
         avatarUrl: user.avatarUrl,
       },
