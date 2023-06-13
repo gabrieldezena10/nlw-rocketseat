@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 const signInURL = `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`
 
+// Quando um usuário não logado tenta acessar uma url da aplicação diretamente
+
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value
 
